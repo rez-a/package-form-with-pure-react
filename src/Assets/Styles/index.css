@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #111418;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+.btn {
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  padding: 0.375rem;
+}
+.form-control {
+  background-color: #232a31;
+  border-color: #232a31;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  padding: 0.8rem 0.9rem;
+}
+.form-control:focus {
+  color: #f3f3f3;
+  background-color: #232a31;
+  border-color: #80bdff !important;
+  box-shadow: 0 0 5px rgb(82 160 245) !important;
+}
+.container-fluid {
+  height: 100vh;
+}
+.content {
+  padding: 3rem 13rem;
+}
+.showcase .content-img {
+  background-color: #111418;
+  background-image: url("../Images/herro-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+}
+.showcase .bg-dark {
+  z-index: 2;
+  opacity: 0.5;
+}
+.showcase .text {
+  z-index: 5;
+}
+.btn-primary {
+  font-size: 15px;
+}
+.btn-primary svg,
+.btn-secondary svg {
+  font-size: 20px;
+}
+.btn-secondary span {
+  display: inline-flex;
+}
+.spaceWithOr div:first-child,
+.spaceWithOr div:last-child {
+  height: 1px;
+  opacity: 0.3;
+}
+.spaceWithOr div:first-child {
+  width: 10%;
+}
+.spaceWithOr div:last-child {
+  width: 80%;
+}
+.form-check-input {
+  background-color: #232a31;
+  border-color: #232a31;
+}
+.form-check-input:focus {
+  border-color: #232a31;
+}
+.btn-primary.submit {
+  font-size: 18px;
+  padding: 0.5rem 2.5rem;
+}
+.changeTheme {
+  right: 0;
+  top: 30%;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+.changeTheme div button {
+  border-radius: 0.25rem 0 0 0.25rem;
+  -webkit-border-radius: 0.25rem 0 0 0.25rem;
+  -moz-border-radius: 0.25rem 0 0 0.25rem;
+  -ms-border-radius: 0.25rem 0 0 0.25rem;
+  -o-border-radius: 0.25rem 0 0 0.25rem;
+}
+.changeTheme div button:focus {
+  border: none;
+  box-shadow: none;
+}
+.changeTheme div button svg {
+  font-size: 25px;
+}
+.changeTheme .colorBox {
+  width: 220px;
+}
+.changeTheme .colors {
+  width: 100%;
+}
+.changeTheme .colors button {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width: 992px) {
+  .content {
+    padding: 3rem 7rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .content {
+    padding: 1rem;
+  }
+}

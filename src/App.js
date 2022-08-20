@@ -1,9 +1,13 @@
+import SignUp from "./Components/SignUp";
+import WelcomeText from "./Components/WelcomeText";
+import Layout from "./Layout/Layout";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Layout>
+      <WelcomeText />
+      <SignUp />
+    </Layout>
   );
 }
 

@@ -5,7 +5,7 @@ import Layout from "./Layout/Layout";
 function App() {
   return (
     <Layout>
-      <WelcomeText />
+      <WelcomeText text="Looks like you're new here!" />
       <SignUp />
     </Layout>
   );

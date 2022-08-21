@@ -24,6 +24,7 @@ a {
   -ms-border-radius: 0.25rem;
   -o-border-radius: 0.25rem;
   padding: 0.8rem 0.9rem;
+  color: #f3f3f3;
 }
 .form-control:focus {
   color: #f3f3f3;
@@ -126,6 +127,51 @@ a {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
 }
+.form-group div:nth-child(2) {
+  position: relative;
+}
+.form-group small.invalid,
+.form-check + small.invalid {
+  color: #b00020;
+  background-color: #b0002035;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  font-size: 12px;
+}
+.form-control.invalid {
+  border-color: #b00020 !important;
+  box-shadow: 0 0 5px rgba(176, 0, 32, 0.208) !important;
+}
+.form-control.invalid:focus {
+  border-color: #80bdff !important;
+  box-shadow: 0 0 5px rgb(82 160 245) !important;
+}
+.form-check + small.invalid {
+  width: fit-content;
+  margin-top: 0.5rem;
+  height: 22px;
+}
+.progress {
+  height: 10px;
+  background-color: #35404b;
+}
+.iconShowPass {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  display: inline-flex;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  cursor: pointer;
+}
+
 @media screen and (max-width: 992px) {
   .content {
     padding: 3rem 7rem;

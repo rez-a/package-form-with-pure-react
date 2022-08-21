@@ -4,39 +4,31 @@ import { AiOutlineGoogle, AiFillApple } from "react-icons/ai";
 import BtnSecondary from './utilities/BtnSecondary';
 import SpaseWithOr from './utilities/SpaseWithOr';
 import InputPrimary from './utilities/InputPrimary';
-import InputCheckBox from './utilities/InputCheckBox';
 import { validation } from '../validation';
 import { Toaster } from 'react-hot-toast';
 import { showToast } from '../toast';
 import { Link, useLocation } from 'react-router-dom';
 
-const SignUp = () => {
+
+const Login = () => {
     const { pathname } = useLocation();
     const [data, setData] = useState({
-        Full_Name: '',
         Email_Address: '',
         Password: '',
-        Confirm_Password: '',
-        Rules: false
     })
     const [error, setError] = useState({});
     const [focusItem, setFocusItem] = useState({
-        Full_Name: false,
         Email_Address: false,
-        Password: false,
-        Confirm_Password: false,
-        Rules: false
+        Password: false
     })
-    const [showPass, setShowPass] = useState({ pass: false, confirmPass: false })
+    const [showPass, setShowPass] = useState({ pass: false })
 
     useEffect(() => {
         setError(validation(data, pathname))
     }, [data, focusItem])
 
     const handleSetData = event => {
-        event.target.type === 'checkbox' ?
-            setData({ ...data, [event.target.id]: event.target.checked }) :
-            setData({ ...data, [event.target.id]: event.target.value })
+        setData({ ...data, [event.target.id]: event.target.value })
     }
 
     const handleFocusItem = event => {
@@ -46,55 +38,35 @@ const SignUp = () => {
         event.preventDefault();
         if (Object.keys(error).length) {
             setFocusItem({
-                Full_Name: true,
                 Email_Address: true,
-                Password: true,
-                Confirm_Password: true,
-                Rules: true
+                Password: true
             })
             showToast('You have entered invalid data', 'error')
         } else {
             setData({
-                Full_Name: '',
                 Email_Address: '',
-                Password: '',
-                Confirm_Password: '',
-                Rules: false
+                Password: ''
             });
             setError({});
             setFocusItem({
-                Full_Name: false,
                 Email_Address: false,
                 Password: false,
-                Confirm_Password: false,
-                Rules: false
             })
-            setShowPass({ pass: false, confirmPass: false })
-            showToast('Your registration was successful', 'success');
+            setShowPass({ pass: false })
+            showToast('You are logged in to your account', 'success');
         }
     }
 
     return (
-        <div className='signup w-100'>
-            <small>Already a member? <Link className='text-primary' to="/login">Login</Link></small>
-            <h3 className='text-white my-3'>Register Your Account</h3>
+        <div className='login w-100'>
+            <small>Not a member? <Link className='text-primary' to="/register">Register</Link></small>
+            <h3 className='text-white my-3'>Log In to Your Account</h3>
             <div className="buttons d-flex mb-3">
                 <BtnPrimary text='Register with Google' icon={<AiOutlineGoogle />} type="button" />
                 <BtnSecondary icon={<AiFillApple />} />
             </div>
             <SpaseWithOr text='OR' />
             <form>
-                <InputPrimary
-                    type="text"
-                    id="Full_Name"
-                    placeholder="Enter Your Name"
-                    label="Full Name"
-                    data={data.Full_Name}
-                    handleSetData={handleSetData}
-                    error={error.Full_Name}
-                    focused={focusItem.Full_Name}
-                    setFocused={handleFocusItem}
-                />
                 <InputPrimary
                     type="email"
                     id="Email_Address"
@@ -119,30 +91,9 @@ const SignUp = () => {
                     setShowPass={() => setShowPass({ ...showPass, pass: !showPass.pass })}
                     pathName={pathname}
                 />
-                <InputPrimary
-                    type={showPass.confirmPass ? 'text' : 'password'}
-                    id="Confirm_Password"
-                    placeholder="Confirm Password"
-                    label="Confirm Password"
-                    data={data.Confirm_Password}
-                    handleSetData={handleSetData}
-                    error={error.Confirm_Password}
-                    focused={focusItem.Confirm_Password}
-                    setFocused={handleFocusItem}
-                    setShowPass={() => setShowPass({ ...showPass, confirmPass: !showPass.confirmPass })}
-                />
-                <InputCheckBox
-                    id='Rules'
-                    data={data.Rules}
-                    handleSetData={handleSetData}
-                    error={error.Rules}
-                    focused={focusItem.Rules}
-                    setFocused={handleFocusItem}
-                >
-                    <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
-                </InputCheckBox>
+                <Link className='text-primary' to="/forgetPassword">Forgot Password ?</Link>
                 <div className='mt-4'>
-                    <BtnPrimary text='Register' type="submit" handleSubmit={handleSubmit} />
+                    <BtnPrimary text='Log in' type="submit" handleSubmit={handleSubmit} />
                 </div>
             </form>
             <Toaster />
@@ -150,4 +101,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;

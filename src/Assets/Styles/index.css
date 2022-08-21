@@ -72,7 +72,10 @@ a {
   width: 10%;
 }
 .spaceWithOr div:last-child {
-  width: 80%;
+  width: 100%;
+}
+.spaceWithOr .text {
+  white-space: nowrap;
 }
 .form-check-input {
   background-color: #232a31;

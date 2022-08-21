@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
                         {WelcomeText}
                     </div>
                 </div>
-                <div className="col-lg-8 col-12 content">{SignUp}</div>
+                <div className="col-lg-8 col-12 content d-flex align-items-center">{SignUp}</div>
             </div>
             <ChangeTheme />
         </div>

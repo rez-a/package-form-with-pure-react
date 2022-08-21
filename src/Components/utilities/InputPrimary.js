@@ -3,20 +3,21 @@ import { AiFillWarning } from "react-icons/ai";
 import zxcvbn from 'zxcvbn';
 import { GoEye, GoEyeClosed } from "react-icons/go";
 
-const InputPrimary = ({ type, id, placeholder, label, data, handleSetData, error, focused, setFocused, setShowPass }) => {
+const InputPrimary = ({ type, id, placeholder, label, data, handleSetData, error, focused, setFocused, setShowPass, pathName }) => {
+    console.log(error, focused)
     const [stronge, setStronge] = useState(0);
     const [progress, setProgress] = useState({ color: 'light', text: 'Very weak' })
     useEffect(() => {
         if (id === 'Password') {
             setStronge(zxcvbn(data).score);
         }
-    }, [data])
+    }, [data, id])
 
     useEffect(() => {
         if (id === 'Password') {
             handleSetColorProgress(stronge)
         }
-    }, [stronge])
+    }, [stronge, id])
 
     const handleSetColorProgress = number => {
         switch (true) {
@@ -82,7 +83,7 @@ const InputPrimary = ({ type, id, placeholder, label, data, handleSetData, error
                 }
             </div>
             {
-                id === 'Password' &&
+                id === 'Password' && pathName === '/register' &&
                 <>
                     <div className="progress mt-2">
                         <div className={`progress-bar bg-${progress.color}`} style={{ width: `${stronge ? stronge * 25 : 15}%` }} ></div>

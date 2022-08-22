@@ -4,7 +4,6 @@ import zxcvbn from 'zxcvbn';
 import { GoEye, GoEyeClosed } from "react-icons/go";
 
 const InputPrimary = ({ type, id, placeholder, label, data, handleSetData, error, focused, setFocused, setShowPass, pathName }) => {
-    console.log(error, focused)
     const [stronge, setStronge] = useState(0);
     const [progress, setProgress] = useState({ color: 'light', text: 'Very weak' })
     useEffect(() => {

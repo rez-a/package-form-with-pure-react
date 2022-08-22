@@ -15,6 +15,9 @@ a {
   -o-border-radius: 0.25rem;
   padding: 0.375rem;
 }
+.btn-outline-dark {
+  font-weight: 500 !important;
+}
 .form-control {
   background-color: #232a31;
   border-color: #232a31;
@@ -32,7 +35,8 @@ a {
   border-color: #80bdff !important;
   box-shadow: 0 0 5px rgb(82 160 245) !important;
 }
-.container-fluid {
+.container-fluid,
+.container {
   height: 100vh;
 }
 .content {
@@ -178,6 +182,9 @@ a {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
+}
+.img-demo {
+  box-shadow: 0 5px 15px 0px #0000008a;
 }
 
 @media screen and (max-width: 992px) {

@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import BtnSecondary from './utilities/BtnSecondary';
 import { AiFillSetting } from "react-icons/ai";
 import { themes } from '../Assets/themes';
+import { themeContext } from '../context/ThemeContext';
 
 const ChangeTheme = () => {
+    const { setTheme } = useContext(themeContext);
     const [showThemes, setShowThemes] = useState(false);
     const [activeTheme, setActiveTheme] = useState(themes[0])
+
+    const handleChangeTheme = (theme) => {
+        setActiveTheme(theme);
+        setTheme(theme.color)
+    }
     return (
         <div className='changeTheme position-fixed d-flex align-items-start' style={{ transform: `translateX(${showThemes ? '0px' : '220px'})` }}>
             <div onClick={() => setShowThemes(!showThemes)}><BtnSecondary icon={<AiFillSetting />} /></div>
@@ -19,7 +26,7 @@ const ChangeTheme = () => {
                                     key={theme.id}
                                     className='color'
                                     style={{ width: `${activeTheme === theme ? '15px' : '20px'}`, height: `${activeTheme === theme ? '15px' : '20px'}`, margin: '0.5rem', backgroundColor: theme.color }}
-                                    onClick={() => setActiveTheme(theme)}
+                                    onClick={() => handleChangeTheme(theme)}
                                 >
                                 </button>
                             )

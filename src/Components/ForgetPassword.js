@@ -8,6 +8,7 @@ import { validation } from '../validation';
 import { Toaster } from 'react-hot-toast';
 import { showToast } from '../toast';
 import { Link, useLocation } from 'react-router-dom';
+import ChangingLink from './utilities/ChangingLink';
 
 
 const ForgetPassword = () => {
@@ -51,7 +52,7 @@ const ForgetPassword = () => {
 
     return (
         <div className='forget-password'>
-            <small>Return to <Link className='text-primary' to="/login">Login</Link></small>
+            <small>Return to <ChangingLink className='text-primary' to="/login" type='Link'>Login</ChangingLink></small>
             <h3 className='text-white my-3'>Forgot password?</h3>
             <p className='text-muted mb-3'>Enter the email address or mobile number associated with your account.</p>
             <form className='mt-4'>

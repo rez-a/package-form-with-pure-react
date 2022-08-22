@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import BtnPrimary from './utilities/BtnPrimary';
 import { AiOutlineGoogle, AiFillApple } from "react-icons/ai";
 import BtnSecondary from './utilities/BtnSecondary';
@@ -9,8 +9,13 @@ import { validation } from '../validation';
 import { Toaster } from 'react-hot-toast';
 import { showToast } from '../toast';
 import { Link, useLocation } from 'react-router-dom';
+import { setBg } from '../setBg';
+import { themeContext } from '../context/ThemeContext';
+import ChangingLink from './utilities/ChangingLink';
+
 
 const SignUp = () => {
+    const { theme } = useContext(themeContext);
     const { pathname } = useLocation();
     const [data, setData] = useState({
         Full_Name: '',
@@ -32,6 +37,9 @@ const SignUp = () => {
     useEffect(() => {
         setError(validation(data, pathname))
     }, [data, focusItem])
+    useEffect(() => {
+        setBg(pathname)
+    }, [])
 
     const handleSetData = event => {
         event.target.type === 'checkbox' ?
@@ -76,7 +84,7 @@ const SignUp = () => {
 
     return (
         <div className='signup w-100'>
-            <small>Already a member? <Link className='text-primary' to="/login">Login</Link></small>
+            <small>Already a member? <ChangingLink className='text-primary' to="/login" type='Link'>Login</ChangingLink></small>
             <h3 className='text-white my-3'>Register Your Account</h3>
             <div className="buttons d-flex mb-3">
                 <BtnPrimary text='Register with Google' icon={<AiOutlineGoogle />} type="button" />
@@ -139,7 +147,7 @@ const SignUp = () => {
                     focused={focusItem.Rules}
                     setFocused={handleFocusItem}
                 >
-                    <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
+                    <span>I agree to the <ChangingLink className='text-primary' type='a'>Terms</ChangingLink> and <ChangingLink className='text-primary' type='a'>Privacy Policy</ChangingLink>.</span>
                 </InputCheckBox>
                 <div className='mt-4'>
                     <BtnPrimary text='Register' type="submit" handleSubmit={handleSubmit} />

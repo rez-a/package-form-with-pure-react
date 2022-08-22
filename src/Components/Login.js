@@ -8,6 +8,8 @@ import { validation } from '../validation';
 import { Toaster } from 'react-hot-toast';
 import { showToast } from '../toast';
 import { Link, useLocation } from 'react-router-dom';
+import { setBg } from '../setBg';
+import ChangingLink from './utilities/ChangingLink';
 
 
 const Login = () => {
@@ -26,6 +28,10 @@ const Login = () => {
     useEffect(() => {
         setError(validation(data, pathname))
     }, [data, focusItem])
+
+    useEffect(() => {
+        setBg(pathname)
+    }, [])
 
     const handleSetData = event => {
         setData({ ...data, [event.target.id]: event.target.value })
@@ -59,7 +65,7 @@ const Login = () => {
 
     return (
         <div className='login w-100'>
-            <small>Not a member? <Link className='text-primary' to="/register">Register</Link></small>
+            <small>Not a member? <ChangingLink className='text-primary' to="/register" type='Link'>Register</ChangingLink></small>
             <h3 className='text-white my-3'>Log In to Your Account</h3>
             <div className="buttons d-flex mb-3">
                 <BtnPrimary text='Register with Google' icon={<AiOutlineGoogle />} type="button" />
@@ -91,7 +97,7 @@ const Login = () => {
                     setShowPass={() => setShowPass({ ...showPass, pass: !showPass.pass })}
                     pathName={pathname}
                 />
-                <Link className='text-primary' to="/forgetPassword">Forgot Password ?</Link>
+                <ChangingLink className='text-primary' to="/forgetPassword" type='Link'>Forgot Password ?</ChangingLink>
                 <div className='mt-4'>
                     <BtnPrimary text='Log in' type="submit" handleSubmit={handleSubmit} />
                 </div>

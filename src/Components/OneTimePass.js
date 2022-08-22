@@ -1,13 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import BtnPrimary from './utilities/BtnPrimary';
 import otpIcon from '../Assets/Images/otp-icon.png';
 import { Toaster } from 'react-hot-toast';
 import InputOTP from './utilities/InputOTP.js';
 import { showToast } from '../toast';
+import { useLocation } from 'react-router-dom';
+import { setBg } from '../setBg';
+import ChangingLink from './utilities/ChangingLink';
 
 
 
 const OneTimePass = () => {
+    const { pathname } = useLocation();
     const [code, setCode] = useState({
         code_1: '',
         code_2: '',
@@ -15,6 +19,9 @@ const OneTimePass = () => {
         code_4: ''
     })
     const inputsRef = useRef([]);
+    useEffect(() => {
+        setBg(pathname)
+    }, [])
 
     const handleSetFocused = (index) => {
         if (index < inputsRef.current.length - 1) {
@@ -73,7 +80,7 @@ const OneTimePass = () => {
                 </div>
                 <div className='my-4 d-flex align-items-center justify-content-between'>
                     <BtnPrimary text='Verify' type="submit" />
-                    <p className='mb-0'>Didn't get the code? <a href="#">Resend it</a></p>
+                    <p className='mb-0'>Didn't get the code? <ChangingLink className='text-primary' type='a'>Resend it</ChangingLink></p>
                 </div>
             </form>
             <Toaster />
